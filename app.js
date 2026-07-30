@@ -2,9 +2,10 @@ const elementos = document.querySelectorAll(".card, .grid div, .hero-text, .hero
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
             entry.target.style.opacity = "1";
             entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
         }
     });
 });
@@ -16,16 +17,14 @@ elementos.forEach(el => {
     observer.observe(el);
 });
 
-// Mensagem de boas-vindas
 window.addEventListener("load", () => {
     console.log("Bem-vindo à SolveHub!");
 });
 
-// Botão "Começar Agora"
 const botao = document.querySelector(".btn-principal");
 
-if(botao){
-    botao.addEventListener("click", function(){
+if (botao) {
+    botao.addEventListener("click", () => {
         alert("Bem-vindo à SolveHub! Vamos criar sua conta.");
     });
 }
